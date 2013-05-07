@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?> 
+<transporte>
+	<frete>
+		<status>1</status>
+		<msg>OK</msg> 
+		<valor>40,0</valor> 
+		<transporte>R</transporte> 
+	</frete>
+</transporte>

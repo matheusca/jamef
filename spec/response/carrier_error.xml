@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?> 
+<transporte>
+	<frete>
+		<status>2</status>
+		<msg>Rota nao atendida pela transportadora</msg> 
+		<valor>0</valor>
+	</frete> 
+</transporte>
