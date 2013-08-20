@@ -8,11 +8,11 @@ module Jamef
     end
 
     def total
-      Elegible.new('+', cubage_sum).total 
+      Elegible.new('+', cubage_sum << 300).total 
     end
 
     def to_s
-      Elegible.new('+', cubage_sum).to_s
+      Elegible.new('+', cubage_sum << 300).to_s
     end
 
     def price

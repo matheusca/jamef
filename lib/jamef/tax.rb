@@ -36,9 +36,9 @@ module Jamef
       {
         P_CIC_NEGC: self.cnpj,
         P_CEP: self.cep,
-        P_VLR_CARG: cubage.price.total,
-        P_PESO_KG: cubage.weight.total,
-        P_CUBG: cubage.total,
+        P_VLR_CARG: cubage.price.to_s,
+        P_PESO_KG: cubage.weight.to_s,
+        P_CUBG: cubage.to_s,
         P_COD_REGN: self.region.to_s,
         P_UF: self.uf
       }
