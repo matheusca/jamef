@@ -1,3 +1,5 @@
+require 'open-uri'
+
 module Jamef
   class Tax
     attr_accessor :cubage, :region, :cnpj, :cep, :uf
@@ -30,10 +32,10 @@ module Jamef
       {
         P_CIC_NEGC: self.cnpj,
         P_CEP: self.cep,
-        P_VLR_CARG: cubage.price.total.to_i.to_s,
-        P_PESO_KG: ("%.2f" % cubage.weight.total).gsub(".", ","),
+        P_VLR_CARG: ("%.2f" % cubage.price.total).gsub(".", ","),
+        P_PESO_KG: ("%.3f" % cubage.weight.total).gsub(".", ","),
         P_CUBG: ("%.3f" % cubage.total).gsub(".", ","),
-        P_COD_REGN: self.region.to_s,
+        P_COD_REGN: self.region.to_i,
         P_UF: self.uf
       }
     end
@@ -41,7 +43,7 @@ module Jamef
     private
 
     def get_xml
-      RestClient.get(URL, {:params => params}).to_str
+      open(URI.parse("#{URL}?P_CIC_NEGC=#{params[:P_CIC_NEGC]}&P_CEP=#{params[:P_CEP]}&P_VLR_CARG=#{params[:P_VLR_CARG]}&P_PESO_KG=#{params[:P_PESO_KG]}&P_CUBG=#{params[:P_CUBG]}&P_COD_REGN=#{params[:P_COD_REGN]}&P_UF=#{params[:P_UF]}")).read
     end
   end
 end
