@@ -26,23 +26,22 @@ module Jamef
       end
     end
 
-    private
-
-    def get_xml
-      puts params
-      RestClient.get(URL, {:params => params}).to_str
-    end
-
     def params
       {
         P_CIC_NEGC: self.cnpj,
         P_CEP: self.cep,
-        P_VLR_CARG: cubage.price.to_s.gsub(",", "."),
-        P_PESO_KG: self.cubage.weight.to_s.gsub(",", "."),
-        P_CUBG: cubage.to_s.gsub(",", "."),
+        P_VLR_CARG: cubage.price.total.to_i.to_s,
+        P_PESO_KG: ("%.2f" % cubage.weight.total).gsub(".", ","),
+        P_CUBG: ("%.3f" % cubage.total).gsub(".", ","),
         P_COD_REGN: self.region.to_s,
         P_UF: self.uf
       }
+    end
+
+    private
+
+    def get_xml
+      RestClient.get(URL, {:params => params}).to_str
     end
   end
 end
